@@ -4,7 +4,9 @@ use mlua::lua_module;
 use nvim_utils::prelude::*;
 
 fn get_line_blame(lua: &Lua, (file, line): (String, usize)) -> mlua::Result<String> {
-    Ok("Hello, world!".to_string())
+    //let blam = Blam::new(lua);
+    //blam.get_line_blame((file, line))
+    nvim_utils::require::<LuaTable>(lua, "blam")?.call_function("peek_blame", ())
 }
 
 struct Blam<'a> {
@@ -31,7 +33,7 @@ impl<'a> LuaUserData for Blam<'a> {
 }
 
 #[lua_module]
-fn register<'a>(lua: &'static Lua) -> LuaResult<LuaTable<'a>> {
+fn core<'a>(lua: &'static Lua) -> LuaResult<LuaTable<'a>> {
     let d = Blam::new(lua).to_lua(lua)?;
     let LuaValue::Table(t) = d else {
         return Err(mlua::Error::FromLuaConversionError {

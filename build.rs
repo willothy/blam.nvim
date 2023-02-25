@@ -7,18 +7,18 @@ static CARGO_PKG_NAME: &str = "CARGO_PKG_NAME";
 static PROFILE: &str = "PROFILE";
 static CARGO_MANIFEST_DIR: &str = "CARGO_MANIFEST_DIR";
 
-#[derive(Debug, Deserialize)]
+#[derive(Deserialize)]
 struct PluginBuildConfig {
     plugin: Plugin,
     module: Module,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Deserialize)]
 struct Plugin {
     name: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Deserialize)]
 struct Module {
     name: String,
     dist: Option<PathBuf>,
@@ -37,7 +37,6 @@ pub fn main() -> Result<(), Box<dyn std::error::Error>> {
     let config: PluginBuildConfig = toml::from_str(&cfg_str)?;
 
     // The directory where the plugin will be deployed
-
     let lua_dir = manifest_dir.join("lua");
     let (deps_dir, dist_dir) = if let Some(dist) = &config.module.dist {
         let dist_dir = lua_dir.join(dist);

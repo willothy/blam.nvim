@@ -16,6 +16,7 @@ mlua = { version = "0.8.7", features = [
     "luajit",
     "vendored",
 ] }
+git2 = { version = "0.16.1", features = ["vendored-libgit2", "vendored-openssl"] }
 
 [build-dependencies]
 serde = { version = "1.0.152", features = ["derive"] }
