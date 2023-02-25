@@ -33,6 +33,8 @@ impl<'a> LuaUserData for Blam<'a> {
 
 #[module(blam::core)]
 fn core<'a>(lua: &'static Lua) -> LuaResult<LuaTable<'a>> {
+    let t = lua.create_table()?;
+
     let d = Blam::new(lua).to_lua(lua)?;
     let LuaValue::Table(t) = d else {
         return Err(mlua::Error::FromLuaConversionError {
