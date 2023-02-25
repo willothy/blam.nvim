@@ -1,6 +1,5 @@
-use std::path::PathBuf;
-
-use mlua::lua_module;
+use mlua::lua_State;
+use nvim_utils::module;
 use nvim_utils::prelude::*;
 
 fn get_line_blame(lua: &Lua, (file, line): (String, usize)) -> mlua::Result<String> {
@@ -32,7 +31,7 @@ impl<'a> LuaUserData for Blam<'a> {
     }
 }
 
-#[lua_module]
+#[module(blam::core)]
 fn core<'a>(lua: &'static Lua) -> LuaResult<LuaTable<'a>> {
     let d = Blam::new(lua).to_lua(lua)?;
     let LuaValue::Table(t) = d else {

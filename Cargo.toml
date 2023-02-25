@@ -9,14 +9,17 @@ path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
-nvim-utils = "0.1.4"
+nvim-utils = "0.1.9"
 mlua = { version = "0.8.7", features = [
     "serde",
     "module",
     "luajit",
     "vendored",
 ] }
-git2 = { version = "0.16.1", features = ["vendored-libgit2", "vendored-openssl"] }
+git2 = { version = "0.16.1", features = [
+    "vendored-libgit2",
+    "vendored-openssl",
+] }
 
 [build-dependencies]
 serde = { version = "1.0.152", features = ["derive"] }
