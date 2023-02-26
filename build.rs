@@ -1,7 +1,7 @@
+#![allow(dead_code)]
 use serde::Deserialize;
-use std::collections::HashMap;
 use std::env::var;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 static CARGO_PKG_NAME: &str = "CARGO_PKG_NAME";
 static PROFILE: &str = "PROFILE";

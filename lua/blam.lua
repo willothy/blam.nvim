@@ -21,11 +21,18 @@ function M.remove_virtual_text()
     vim.api.nvim_buf_del_extmark(bufnr, blame_ns, M.mark)
 end
 
+M.core = require("blam.core")
+
 function M.peek_blame()
     local line = vim.api.nvim_win_get_cursor(0)[1]
     local file = vim.fn.expand("%")
-    local blame = vim.fn.system("git blame -L " .. line .. "," .. line .. " --porcelain -- " .. file)
-    return blame
+    local blame = M.core.get_line_blame(file, line)
+    M.add_virtual_text(blame)
+    vim.defer_fn(M.remove_virtual_text, 5000)
+end
+
+function M.setup(opt)
+    -- This isn't actually used yet, but some plugin managers call it automatically so I added it for compatibility
 end
 
 return M
