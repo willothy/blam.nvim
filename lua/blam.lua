@@ -43,7 +43,6 @@ function M.peek()
     if blame_enabled then return end
     show_line_blame()
     blame_cursor_move = vim.api.nvim_create_autocmd("CursorMoved", {
-        pattern = "*",
         callback = function()
             remove_virtual_text()
             if blame_cursor_move == nil then return end
@@ -63,7 +62,6 @@ function M.toggle()
         blame_cursor_move = nil
     else
         blame_cursor_move = vim.api.nvim_create_autocmd("CursorMoved", {
-            pattern = "*",
             callback = function()
                 show_line_blame()
             end
@@ -74,6 +72,7 @@ end
 
 function M.setup(opt)
     M.config = vim.tbl_deep_extend("force", M.config, opt)
+    M.core = require('blam.core')
 
     if type(opt.hl) == 'string' then
         if opt.hl:sub(1, 1) == '#' then
@@ -92,8 +91,6 @@ function M.setup(opt)
     if M.config.enabled then
         M.toggle()
     end
-
-    M.core = require('blam.core')
 end
 
 return M
