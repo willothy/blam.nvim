@@ -87,7 +87,7 @@ function M.setup(opt)
         M.config.hl = 'BlamLine'
     end
 
-    if config.enabled then
+    if M.config.enabled then
         M.toggle()
     end
 
