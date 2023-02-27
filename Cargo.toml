@@ -1,6 +1,6 @@
 [package]
 name = "blam-core"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 
 [lib]
@@ -8,7 +8,7 @@ path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
-nvim-utils = "0.1.9"
+nvim-utils = "0.1.10"
 mlua = { version = "0.8.7", features = [
     "serde",
     "module",
