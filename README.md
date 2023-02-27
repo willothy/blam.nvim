@@ -38,8 +38,7 @@ require("blam").peek()
 
 Here's my setup:
 ```lua
-local blam = require("blam")
-vim.keymap.set("n", "<leader>b", blam.toggle()) 
+vim.keymap.set("n", "<leader>b", require("blam").toggle) 
 ```
 
 ## Configuration
@@ -51,8 +50,9 @@ Blam comes with the following defaults:
     -- or a table with fg and bg colors
     -- or a highlight group
     hl = "Comment",
-    -- Timeout before peek blame disappears
-    peek_timeout = 4000,
+    -- Timeout before peek blame disappears 
+    -- Set to 0 to disable and only hide peek blame on cursor move
+    peek_timeout = 0,
     -- Whether line blame will be enabled on startup
     enabled = true,
 }
