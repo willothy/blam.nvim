@@ -45,6 +45,7 @@ function M.peek()
     blame_cursor_move = vim.api.nvim_create_autocmd("CursorMove", {
         callback = function()
             remove_virtual_text()
+            if blame_cursor_move == nil then return end
             vim.api.nvim_del_autocmd(blame_cursor_move)
             blame_cursor_move = nil
         end
@@ -86,7 +87,9 @@ function M.setup(opt)
         M.config.hl = 'BlamLine'
     end
 
-    blame_enabled = M.config.enabled
+    if config.enabled then
+        M.toggle()
+    end
 
     M.core = require('blam.core')
 end
