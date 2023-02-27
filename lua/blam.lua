@@ -34,7 +34,7 @@ local function show_line_blame()
 end
 
 M.config = {
-    enabled = true,
+    enabled = false,
     peek_timeout = 0,
     hl = "Comment",
 }

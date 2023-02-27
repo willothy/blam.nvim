@@ -38,7 +38,7 @@ require("blam").peek()
 
 Here's my setup:
 ```lua
-vim.keymap.set("n", "<leader>b", require("blam").toggle) 
+vim.keymap.set("n", "<leader>b", require("blam").peek) 
 ```
 
 ## Configuration
@@ -54,7 +54,8 @@ Blam comes with the following defaults:
     -- Set to 0 to disable and only hide peek blame on cursor move
     peek_timeout = 0,
     -- Whether line blame will be enabled on startup
-    enabled = true,
+    -- Disabled by defauly as it can be a bit intrusive (I prefer using peek)
+    enabled = false,
 }
 ```
 
