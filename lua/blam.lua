@@ -43,6 +43,7 @@ function M.peek()
     if blame_enabled then return end
     show_line_blame()
     blame_cursor_move = vim.api.nvim_create_autocmd("CursorMove", {
+        pattern = "*",
         callback = function()
             remove_virtual_text()
             if blame_cursor_move == nil then return end
@@ -65,6 +66,7 @@ function M.toggle()
             vim.api.nvim_del_autocmd(blame_cursor_move)
         end
         blame_cursor_move = vim.api.nvim_create_autocmd("CursorMove", {
+            pattern = "*",
             callback = function()
                 show_line_blame()
             end
