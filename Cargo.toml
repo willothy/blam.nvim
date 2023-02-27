@@ -8,8 +8,7 @@ path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
-#nvim-utils = "0.1.9"
-nvim-utils = { path = "../nvim-utils" }
+nvim-utils = "0.1.9"
 mlua = { version = "0.8.7", features = [
     "serde",
     "module",
