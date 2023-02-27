@@ -2,6 +2,12 @@
 
 Inspired by VSCode and GitLens, this plugin simply adds blame info as virtual text to the end of your current line. Written in Rust using `git2` and `nvim-utils`.
 
+
+
+https://user-images.githubusercontent.com/38540736/221464520-057099bb-e6d5-47d9-98bc-b177021b5e42.mp4
+
+
+
 ## Installation
 
 Install using your favorite package manager
@@ -38,7 +44,14 @@ require("blam").peek()
 
 Here's my setup:
 ```lua
-vim.keymap.set("n", "<leader>b", require("blam").peek) 
+{
+    'willothy/blam.nvim',
+    build = 'make',
+    config = true,
+    init = function()
+        vim.keymap.set("n", "<leader>b", require("blam").peek) 
+    end
+}
 ```
 
 ## Configuration
