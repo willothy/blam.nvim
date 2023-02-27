@@ -2,8 +2,8 @@ local M = {}
 
 local blame_ns = vim.api.nvim_create_namespace("blame")
 local mark = nil
+local blame_cursor_move = nil
 local blame_enabled = false
-local blame_cursor_move
 
 local function add_virtual_text(text)
     local bufnr = vim.api.nvim_get_current_buf()
@@ -56,11 +56,14 @@ function M.peek()
 end
 
 function M.toggle()
-    if blame_enabled then
+    if blame_enabled == true then
         remove_virtual_text()
         vim.api.nvim_del_autocmd(blame_cursor_move)
         blame_cursor_move = nil
     else
+        if blame_cursor_move ~= nil then
+            vim.api.nvim_del_autocmd(blame_cursor_move)
+        end
         blame_cursor_move = vim.api.nvim_create_autocmd("CursorMove", {
             callback = function()
                 show_line_blame()
