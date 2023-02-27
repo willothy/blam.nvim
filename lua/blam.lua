@@ -61,6 +61,7 @@ function M.toggle()
         vim.api.nvim_del_autocmd(blame_cursor_move)
         blame_cursor_move = nil
     else
+        show_line_blame()
         blame_cursor_move = vim.api.nvim_create_autocmd("CursorMoved", {
             callback = function()
                 show_line_blame()
