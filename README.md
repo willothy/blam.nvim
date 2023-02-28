@@ -17,6 +17,9 @@ Install using your favorite package manager
 {
     'willothy/blam.nvim',
     build = 'make',
+    opts = {
+        -- options
+    },
     config = true
 }
 ```
@@ -26,7 +29,9 @@ Install using your favorite package manager
 use('willothy/blam.nvim', {
     run = 'make',
     config = function()
-        require("blam").setup()
+        require("blam").setup({
+            -- options
+        })
     end
 })
 ```
