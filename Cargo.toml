@@ -8,16 +8,16 @@ path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
-nvim-utils = "0.1.10"
+nvim-utils = "0.1.12"
 mlua = { version = "0.8.7", features = [
-    "serde",
-    "module",
-    "luajit",
-    "vendored",
+	"serde",
+	"module",
+	"luajit",
+	"vendored",
 ] }
 git2 = { version = "0.16.1", features = [
-    "vendored-libgit2",
-    "vendored-openssl",
+	"vendored-libgit2",
+	"vendored-openssl",
 ] }
 chrono = "0.4.23"
 timeago = "0.4.1"
